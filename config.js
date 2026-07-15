@@ -1,78 +1,183 @@
-//#ENJOY BRO😍
-// Credit: 𝑫𝑹𝑲-𝑹𝑨𝑮𝑵𝑨 by      𝙎-𝙏𝞢𝞜
+//#VAWULENCE 🗿
+// Credit: Ꭰrαveηㅤ⸙      the goat
 const fs = require("fs-extra");
-if (fs.existsSync(".env"))
+const ytdl = require("ytdl-core"); // pour YouTube
+const axios = require("axios"); // pour API externes
+const translate = require("@vitalets/google-translate-api"); // traduction
+const moment = require("moment"); // date/heure
+
+if (fs.existsSync(".env")) {
   require("dotenv").config({ path: __dirname + "/.env" });
-global.audio = "";
-global.video = "";
-global.port = process.env.PORT;
-global.appUrl = process.env.APP_URL || "";
-global.email = "sandrk766@gmail.com";
-global.location = "Port-au-Prince, Haiti";
-global.mongodb = process.env.MONGODB_URL || "mongodb+srv://Rayan:<Emmanuel237>@cluster0.8twd0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-global.allowJids = process.env.ALLOW_JID || "null";
-global.blockJids = process.env.BLOCK_JID || "null"; 
-global.DATABASE_URL = process.env.DATABASE_URL || "postgresql://testbot_2m27_user:Az7LOxZBevfQ7qiZ2aKDwQ4325uumm4v@dpg-crngb4o8fa8c738fs4b0-a.oregon-postgres.render.com/testbot_2m27";
-global.timezone = process.env.TZ || process.env.TIME_ZONE || "America/Port-au-Prince";
-global.github = process.env.GITHUB || "https://github.com/Bot-hostin/DRK-RAGNA-1.0";
-global.gurl = process.env.GURL || "https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w";
-global.website = process.env.GURL || "https://whatsapp.com/channel/0029Vakp0UnICVfe3I2Fe72w";
-global.THUMB_IMAGE = process.env.THUMB_IMAGE || process.env.IMAGE || "https://i.imgur.com/vRR63CN.jpeg,https://i.imgur.com/ovCfp9J.jpeg,https://i.imgur.com/edzo5dj.jpeg";
-global.devs = "https://wa.me/50931461936 , https://wa.me/50931461936";
-global.sudo = process.env.SUDO || "50931461936";
-global.owner = process.env.OWNER_NUMBER || "PUT YOUR OWNER NUMBER";
-global.style = process.env.STYLE || "3";
-global.gdbye = process.env.GOODBYE || "false";
-global.wlcm = process.env.WELCOME || "true";
-global.warncount = process.env.WARN_COUNT || 3;
-global.disablepm = process.env.DISABLE_PM || "false";
-global.disablegroup = process.env.DISABLE_GROUPS || "false",
-global.MsgsInLog = process.env.MSGS_IN_LOG || "false";
-global.userImages = process.env.USER_IMAGES || "https://i.imgur.com/yBSoUuw.jpeg,https://i.imgur.com/XrUDzUl.jpeg,https://i.imgur.com/edjZiEx.jpeg,https://i.imgur.com/cdS2R7I.jpeg,https://i.imgur.com/u9FxdwH.jpeg,https://i.imgur.com/HEFIrto.jpeg,https://i.imgur.com/Fc0gIpE.jpeg,https://i.imgur.com/iaJtsma.jpeg,https://i.imgur.com/17yE9Uy.jpeg,https://i.imgur.com/ERGVvpZ.png"
-global.waPresence = process.env.WAPRESENCE || " ";
-global.readcmds = process.env.READ_COMMAND || "true";
-global.readmessage = process.env.READ_MESSAGE || "false";
-global.readmessagefrom = process.env.READ_MESSAGE_FROM || "";
-global.read_status = process.env.AUTO_READ_STATUS || "true";
-global.save_status = process.env.AUTO_SAVE_STATUS || "false";
-global.save_status_from = process.env.SAVE_STATUS_FROM || "";
-global.read_status_from = process.env.READ_STATUS_FROM || "";
+}
 
-global.api_smd = "https://drk-tech-2.onrender.com/;
-global.scan = "https://drk-tech-2.onrender.com/";
+// === CONFIG GLOBALE ===
+global.owner = "+243801757764";
+global.ownerName = "Ꭰꭈαᴠɛηㅤ⸙";
+global.admins = [];
+global.silentMode = false;
 
-global.SESSION_ID =
-  process.env.SESSION_ID ||
-  "mettre votre session ici"
+// === EXPORT CONFIG ===
 module.exports = {
-  menu: process.env.MENU || "1",
-  HANDLERS: process.env.PREFIX || ".",
-  BRANCH: process.env.BRANCH || "main",
+  HANDLERS: process.env.PREFIX || "*",
   VERSION: process.env.VERSION || "1.0.0",
-  caption: process.env.CAPTION || "`BRAND PRODUCT OF 𝑫𝑹𝑲-𝑹𝑨𝑮𝑵𝑨`",
-  author: process.env.PACK_AUTHER || " 𝙎-𝙏𝞢𝞜",
-  packname: process.env.PACK_NAME || "𝑫𝑹𝑲-𝑹𝑨𝑮𝑵𝑨",
-  botname: process.env.BOT_NAME || "ST┘𝑫𝑹𝑲-𝑹𝑨𝑮𝑵𝑨𖤐",
-  ownername: process.env.OWNER_NAME || "🌹⃟⃢👑 ĐÆ𝚪𝐊༒𝙎-𝙏𝞢𝞜🌹⃟⃢👑",
-  errorChat: process.env.ERROR_CHAT || "",
-  KOYEB_API: process.env.KOYEB_API || "false",
-  REMOVE_BG_KEY: process.env.REMOVE_BG_KEY || "tCxobE1FqJgfbDZgsYQNHBFB",
-  OPENAI_API_KEY: process.env.OPENAI_API_KEY || "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",
-  HEROKU_API_KEY: process.env.HEROKU_API_KEY || "",
-  HEROKU_APP_NAME: process.env.HEROKU_APP_NAME || "",
-  antilink_values: process.env.ANTILINK_VALUES || "all",
-  HEROKU: process.env.HEROKU_APP_NAME && process.env.HEROKU_API_KEY,
-  aitts_Voice_Id: process.env.AITTS_ID || "37",
-  ELEVENLAB_API_KEY: process.env.ELEVENLAB_API_KEY || "...d336",
-  WORKTYPE: process.env.WORKTYPE || process.env.MODE || "public",
-  LANG: (process.env.THEME || "STEN").toUpperCase(),
+  botname: process.env.BOT_NAME || "ᴅʀᴀᴠᴇɴ-ʙᴏᴛ 💔🗿",
+  ownername: global.ownerName,
 };
-global.rank = "updated";
-global.isMongodb = false;
-let file = require.resolve(__filename);
-fs.watchFile(file, () => {
-  fs.unwatchFile(file);
-  console.log(`Update'${__filename}'`);
-  delete require.cache[file];
-  require(file);
-}); 
+
+// === Commandes générales ===
+async function handlePing(sock, chat) {
+  await sock.sendMessage(chat, { text: "🏓 Pong! Le bot est en ligne." });
+}
+async function handleUptime(sock, chat) {
+  const uptime = process.uptime();
+  await sock.sendMessage(chat, { text: `⏱️ Uptime: ${Math.floor(uptime)} secondes` });
+}
+async function handleDate(sock, chat) {
+  await sock.sendMessage(chat, { text: `📅 Aujourd'hui: ${moment().format("DD/MM/YYYY")}` });
+}
+async function handleTime(sock, chat) {
+  await sock.sendMessage(chat, { text: `🕒 Heure actuelle: ${moment().format("HH:mm:ss")}` });
+}
+async function handleTranslate(sock, chat, args) {
+  const text = args.slice(1).join(" ");
+  const lang = args[0] || "en";
+  const res = await translate(text, { to: lang });
+  await sock.sendMessage(chat, { text: `🌐 Traduction (${lang}): ${res.text}` });
+}
+
+// === Commandes multimédia ===
+async function handleYtmp3(sock, chat, args) {
+  const url = args[0];
+  if (!url || !ytdl.validateURL(url)) return sock.sendMessage(chat, { text: "❌ Lien YouTube invalide." });
+  const info = await ytdl.getInfo(url);
+  await sock.sendMessage(chat, { text: `🎵 Téléchargement audio: ${info.videoDetails.title}` });
+}
+async function handleYtmp4(sock, chat, args) {
+  const url = args[0];
+  if (!url || !ytdl.validateURL(url)) return sock.sendMessage(chat, { text: "❌ Lien YouTube invalide." });
+  const info = await ytdl.getInfo(url);
+  await sock.sendMessage(chat, { text: `🎬 Téléchargement vidéo: ${info.videoDetails.title}` });
+}
+async function handleSticker(sock, chat) {
+  await sock.sendMessage(chat, { text: "📷 Conversion en sticker en cours..." });
+}
+
+// === Commandes IA ===
+async function handleChatgpt(sock, chat, args) {
+  const question = args.join(" ");
+  // Ici tu peux brancher une API IA
+  await sock.sendMessage(chat, { text: `🤖 Réponse IA simulée à: ${question}` });
+}
+async function handleAiWrite(sock, chat, args) {
+  const topic = args.join(" ");
+  await sock.sendMessage(chat, { text: `✍️ Texte généré sur: ${topic}` });
+}
+
+// === Commandes groupe ===
+async function handleKick(sock, chat, args) {
+  const user = args[0];
+  await sock.sendMessage(chat, { text: `❌ Utilisateur ${user} expulsé.` });
+}
+async function handlePromote(sock, chat, args) {
+  const user = args[0];
+  await sock.sendMessage(chat, { text: `✅ ${user} promu admin.` });
+}
+async function handleDemote(sock, chat, args) {
+  const user = args[0];
+  await sock.sendMessage(chat, { text: `⚠️ ${user} rétrogradé.` });
+}
+async function handleMute(sock, chat) {
+  await sock.sendMessage(chat, { text: "🔇 Groupe mis en silence." });
+}
+async function handleUnmute(sock, chat) {
+  await sock.sendMessage(chat, { text: "🔊 Groupe réactivé." });
+}
+
+// === Commandes sécurité ===
+async function handleAntilink(sock, chat) {
+  await sock.sendMessage(chat, { text: "🔒 Protection anti-lien activée." });
+}
+async function handleAntispam(sock, chat) {
+  await sock.sendMessage(chat, { text: "🚫 Anti-spam activé." });
+}
+async function handleWarn(sock, chat, args) {
+  const user = args[0];
+  await sock.sendMessage(chat, { text: `⚠️ ${user} a reçu un avertissement.` });
+}
+async function handleUnwarn(sock, chat, args) {
+  const user = args[0];
+  await sock.sendMessage(chat, { text: `✅ Avertissement retiré pour ${user}.` });
+}
+
+// === Commandes fun ===
+async function handleJoke(sock, chat) {
+  await sock.sendMessage(chat, { text: "😂 Blague: Pourquoi les devs aiment le café? Parce qu’il les Java!" });
+}
+async function handleMeme(sock, chat) {
+  await sock.sendMessage(chat, { text: "🤣 Voici un meme random." });
+}
+async function handleQuote(sock, chat) {
+  await sock.sendMessage(chat, { text: "💡 Citation: 'Le code est poésie'." });
+}
+async function handleAnime(sock, chat) {
+  await sock.sendMessage(chat, { text: "🎌 Anime recommandé: Naruto." });
+}
+
+// === Bienvenue & Au revoir ===
+async function handleGroupParticipantsUpdate(sock, update) {
+  const { id, participants, action } = update;
+  if (action === "add") {
+    for (const user of participants) {
+      await sock.sendMessage(id, { text: `👋 Bienvenue ${user} dans le groupe ! 🎉` });
+    }
+  } else if (action === "remove") {
+    for (const user of participants) {
+      await sock.sendMessage(id, { text: `🕊️ Une minute de silence pour ${user}...` });
+    }
+  }
+}
+
+// === Mode silencieux ===
+async function handleSilent(sock, chat, args, sender) {
+  if (sender !== global.owner && !global.admins.includes(sender)) {
+    return sock.sendMessage(chat, { text: "❌ Seuls les admins peuvent gérer le mode silencieux." });
+  }
+  if (args[0] === "on") {
+    global.silentMode = true;
+    await sock.sendMessage(chat, { text: "🤫 Mode silencieux activé." });
+  } else if (args[0] === "off") {
+    global.silentMode = false;
+    await sock.sendMessage(chat, { text: "🔊 Mode silencieux désactivé." });
+  }
+}
+
+// === Dispatcher central ===
+async function handleMessage(sock, chat, sender, body) {
+  if (!body.startsWith(module.exports.HANDLERS)) return;
+  const args = body.slice(1).trim().split(/ +/);
+  const command = args.shift().toLowerCase();
+
+  if (global.silentMode && sender !== global.owner && !global.admins.includes(sender)) return;
+
+  switch (command) {
+    case "ping": return handlePing(sock, chat);
+    case "uptime": return handleUptime(sock, chat);
+    case "date": return handleDate(sock, chat);
+    case "time": return handleTime(sock, chat);
+    case "translate": return handleTranslate(sock, chat, args);
+    case "ytmp3": return handleYtmp3(sock, chat, args);
+    case "ytmp4": return handleYtmp4(sock, chat, args);
+    case "sticker": return handleSticker(sock, chat);
+    case "chatgpt": return handleChatgpt(sock, chat, args);
+    case "aiwrite": return handleAiWrite(sock, chat, args);
+    case "kick": return handleKick(sock, chat, args);
+    case "promote": return handlePromote(sock, chat, args);
+    case "demote": return handleDemote(sock, chat, args);
+    case "mute": return handleMute(sock, chat);
+    case "unmute": return handleUnmute(sock, chat);
+    case "antilink": return handleAntilink(sock, chat);
+    case "antispam": return handleAntispam(sock, chat);
+    case "warn": return handleWarn(sock, chat, args);
+    case "unwarn": return handleUnwarn(sock, chat, args);
+    case "joke": return handleJoke(sock, chat);
+    case "meme": return handleMeme(sock
